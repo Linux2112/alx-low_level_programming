@@ -19,5 +19,3 @@ tmp = a[index];
 a[index++] = a[n];
 a[n--] = tmp;
 }
-
-
