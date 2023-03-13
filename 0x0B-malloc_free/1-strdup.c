@@ -5,59 +5,50 @@
 unsigned int _strlen(char *str);
 
 /**
-* str_concat - creates a memory space where it concatenates two strings
-* @s1: string one to be concatenated with string s2
-* @s2: string two to be concatenated with string s1
-*
-* Return: the pointer to the newly allocated memory space, NULL if failure
-*/
-char *str_concat(char *s1, char *s2)
+ * _strdup - copies a string to a newly allocated space of memory
+ * @str: the string to be copied
+ *
+ * Return: a pointer to the newly allocated memory,
+ *	or NULL if str = NULL or insufficient memory available
+ */
+char *_strdup(char *str)
 {
-unsigned int i, j, len_s1, len_s2;
+unsigned int i, len;
 char *ptr;
 
-len_s1 = _strlen(s1);
-len_s2 = _strlen(s2);
+if (str == NULL)
+{
+return (NULL);
+}
 
-ptr = malloc(sizeof(char) * (len_s1 + len_s2 + 1));
+len = _strlen(str);
+
+ptr = malloc(sizeof(char) * (len + 1));
 if (ptr == NULL)
 {
 return (NULL);
 }
 
-for (i = 0, j = 0; j < len_s1; i++, j++)
+for (i = 0; i <= len; i++)
 {
-ptr[i] = s1[j];
+ptr[i] = str[i];
 }
-
-for (j = 0; j < len_s2; i++, j++)
-{
-ptr[i] = s2[j];
-}
-
-ptr[i] = '\0';
 
 return (ptr);
 }
 
 /**
  * _strlen - calculates the length of string str
- * @str: string that the length will be calculated
+ * @str: the string that the length will be calculated
  *
- * Return: the length of string str
+ * Return: the length of the string
  */
 unsigned int _strlen(char *str)
 {
 unsigned int i;
 
-if (str == NULL)
-{
-return (0);
-}
-
 for (i = 0; str[i] != '\0'; i++)
 ;
 
-	
 return (i);
 }
