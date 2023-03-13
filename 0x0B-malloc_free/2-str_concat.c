@@ -41,11 +41,11 @@ return (ptr);
 }
 
 /**
- * _strlen - calculates the length of string str
- * @str: string that the length will be calculated
- *
- * Return: the length of string str
- */
+* _strlen - calculates the length of string str
+* @str: string that the length will be calculated
+*
+* Return: the length of string str
+*/
 unsigned int _strlen(char *str)
 {
 unsigned int i;
