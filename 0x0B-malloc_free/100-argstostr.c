@@ -1,40 +1,64 @@
 #include "main.h"
+#include <stdlib.h>
+#include <stddef.h>
+
+int _strlen(char *str);
 
 /**
- * argstostr - concatenate all arguments into a new string
- * @ac: the argument count
- * @av: the argument vector
- *
- * Return: NULL memory allocation fails, ac is 0 or av is NULL,
- * otherwise return a pointer to the new string
- */
+* argstostr - allocates memory to a concatenation all arguments to a program
+*	with \n between each argument
+* @ac: number of arguments
+* @av: array of string arguments
+*
+* Return: the pointer to new string, NULL if failure or ac == 0 or av == NULL
+*/
 char *argstostr(int ac, char **av)
 {
-	char *cat, *chr;
-	int arg, size;
+int i, j, k = 0, totalStrLen = 0;
+char *ptr;
 
-	if (!ac || !av)
-		return (NULL);
+if (ac == 0 || av == NULL)
+{
+return (NULL);
+}
 
-	for (arg = 0, size = 1; arg < ac; ++arg, ++size)
-	{
-		for (chr = av[arg]; *chr; ++chr, ++size)
-			;
-	}
+for (i = 0; i < ac; i++)
 
-	cat = (char *) malloc(sizeof(char) * size);
+totalStrLen += _strlen(av[i]) + 1;
+}
 
-	if (!cat)
-		return (NULL);
+ptr = malloc(sizeof(char) * totalStrLen + 1);
 
-	for (arg = 0, size = 0; arg < ac; ++arg, ++size)
-	{
-		for (chr = av[arg]; *chr; ++chr, ++size)
-			cat[size] = *chr;
-		cat[size] = '\n';
-	}
+if (ptr == NULL)
+{
+return (NULL);
+}
 
-	cat[size] = '\0';
+for (i = 0; i < ac; i++, k++)
+{
+for (j = 0; j < _strlen(av[i]); j++, k++)
+{
+ptr[k] = av[i][j];
+}
+ptr[k] = '\n'; /* add '\n' after each argument */
+}
 
-	return (cat);
+ptr[k] = '\0';
+
+return (ptr);
+}
+
+/**
+* _strlen - calculated the length of string str
+* @str: the string that the length will be calculated
+*
+* Return: the length of the string str
+*/
+int _strlen(char *str)
+{
+int i;
+
+for (i = 0; str[i] != '\0'; i++);
+
+return (i);
 }
