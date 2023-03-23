@@ -64,4 +64,3 @@ void print_char(va_list vargs)
 void print_int(va_list vargs)
 {
 	printf("%d", va_arg(vargs, int));
-
