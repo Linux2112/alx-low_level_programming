@@ -64,3 +64,33 @@ void print_char(va_list vargs)
 void print_int(va_list vargs)
 {
 	printf("%d", va_arg(vargs, int));
+}
+
+/**
+ * print_float - prints a float
+ * @vargs: pointer to current position in va_list
+ *
+ * Return: nothing (void)
+ */
+void print_float(va_list vargs)
+{
+	printf("%f", va_arg(vargs, double));
+}
+
+/**
+ * print_str - prints a string
+ * @vargs: pointer to current position in va_list
+ *
+ * Return: nothing (void)
+ */
+void print_str(va_list vargs)
+{
+	char *str = va_arg(vargs, char *);
+
+	if (str == NULL)
+	{
+		printf("(nil)");
+		return;
+	}
+	printf("%s", str);
+}
